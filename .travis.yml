@@ -21,3 +21,15 @@ after_success:
     - docker push sulsul84/docker-frontend
     - docker push sulsul84/docker-backend
     - docker push sulsul84/docker-nginx
+
+deploy:
+    provider: elasticbeanstalk
+    region: "ap-northeast-2"
+    app: "docker-fullstack-app"
+    env: "DockerFullstackApp-env"
+    bucket_name: elasticbeanstalk-ap-northeast-2-721913135912
+    bucket_path: elasticbeanstalk-ap-northeast-2-721913135912
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
